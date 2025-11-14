@@ -41,5 +41,28 @@ namespace avalondocktest
             dockManager.Layout.LeftSide.Children.Add(sideGroup);
             sideGroup.Children.Add(layoutAnchorable);
         }
+
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            for(int i = 0; i < 10000; i++)
+            {
+                counter++;
+                var content = new UserControl();
+                content.Name = $"content_{counter}";
+                // Regular anchorable for other positions
+                var layoutAnchorable = new LayoutAnchorable
+                {
+                    Title = "New Anchorable " + counter.ToString(),
+                    Content = content,
+                    CanClose = true,
+                    CanHide = false,
+                };
+                var sideGroup = new LayoutAnchorGroup();
+                dockManager.Layout.LeftSide.Children.Add(sideGroup);
+                sideGroup.Children.Add(layoutAnchorable);
+                layoutAnchorable.Close();
+            }
+            
+        }
     }
 }
