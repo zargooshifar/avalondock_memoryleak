@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <Button Click="Button_Click">add new dock</Button>
-            <Button Click="Button2_Click">create and close 10000 docks</Button>
+            <Button Click="Button2_Click">create and close 1000 docks</Button>
 
         </StackPanel>
         <avalonDock:DockingManager Grid.Row="1" Name="dockManager"

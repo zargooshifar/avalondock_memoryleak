@@ -37,14 +37,19 @@ namespace avalondocktest
                 CanClose = true,
                 CanHide = false,
             };
-            var sideGroup = new LayoutAnchorGroup();
-            dockManager.Layout.LeftSide.Children.Add(sideGroup);
-            sideGroup.Children.Add(layoutAnchorable);
+            if (dockManager.Layout.LeftSide.Children.Count() == 0)
+            {
+                var sideGroup = new LayoutAnchorGroup();
+                dockManager.Layout.LeftSide.Children.Add(sideGroup);
+            }
+
+            dockManager.Layout.LeftSide.Children[0].Children.Add(layoutAnchorable);
         }
+
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            for(int i = 0; i < 10000; i++)
+            for(int i = 0; i < 1000; i++)
             {
                 counter++;
                 var content = new UserControl();
@@ -57,9 +62,12 @@ namespace avalondocktest
                     CanClose = true,
                     CanHide = false,
                 };
-                var sideGroup = new LayoutAnchorGroup();
-                dockManager.Layout.LeftSide.Children.Add(sideGroup);
-                sideGroup.Children.Add(layoutAnchorable);
+
+                if (dockManager.Layout.LeftSide.Children.Count() == 0) {
+                    var sideGroup = new LayoutAnchorGroup();
+                    dockManager.Layout.LeftSide.Children.Add(sideGroup);
+                }
+                dockManager.Layout.LeftSide.Children[0].Children.Add(layoutAnchorable); 
                 layoutAnchorable.Close();
             }
             
